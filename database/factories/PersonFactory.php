@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 class PersonFactory extends Factory
 {
     protected $model = Person::class;
+
     /**
      * Define the model's default state.
      *
@@ -23,14 +24,14 @@ class PersonFactory extends Factory
             'name' => $this->faker->name,
             'contacts' => [
                 [
-                    'type' => $this->faker->randomElement(['telefone', 'email', 'whatsapp']),
-                    'value' => $this->faker->phoneNumber
+                    'type' => $this->faker->randomElement(['telefone', 'whatsapp']),
+                    'value' => $this->faker->phoneNumber,
                 ],
                 [
-                    'type' => $this->faker->randomElement(['telefone', 'email', 'whatsapp']),
-                    'value' => $this->faker->email
-                ]
-            ]
+                    'type' => 'email',
+                    'value' => $this->faker->email,
+                ],
+            ],
         ];
     }
 }
