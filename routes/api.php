@@ -20,7 +20,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::resources([
-    'persons' => PersonController::class,
+    'people' => PersonController::class,
 ], [
     'except' => ['create', 'edit']
 ]);
