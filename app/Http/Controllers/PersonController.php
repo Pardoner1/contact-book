@@ -37,7 +37,7 @@ class PersonController extends Controller
         $person = Person::create([
             'id' => (string) \Illuminate\Support\Str::uuid(),
             'name' => $request->input('name'),
-            'contacts' => $request->input('contacts')
+            'contacts' => json_decode($request->input('contacts'))
         ]);
 
         return response()->json($person, 201);
