@@ -34,13 +34,14 @@ class PersonController extends Controller
         'contacts' => 'required|array'
     ]);
 
-    $person = Person::create([
-        'id' => (string) \Illuminate\Support\Str::uuid(),
-        'name' => $request->json('name'),
-        'contacts' => $request->json('contacts'),
-    ]);
+    // $person = Person::create([
+    //     'id' => (string) \Illuminate\Support\Str::uuid(),
+    //     'name' => $request->json('name'),
+    //     'contacts' => $request->json('contacts'),
+    // ]);
 
-    return response()->json($person, 201);
+    return response()->json($request, 201);
+    // return response()->json($person, 201);
 }
 
     // public function store(Request $request)
