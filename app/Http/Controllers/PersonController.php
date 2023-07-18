@@ -40,7 +40,10 @@ class PersonController extends Controller
     //     'contacts' => $request->json('contacts'),
     // ]);
 
-    return response()->json($request, 201);
+    $data = $request->json()->all();
+
+    return response()->json($data, 201); 
+
     // return response()->json($person, 201);
 }
 
