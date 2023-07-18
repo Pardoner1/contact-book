@@ -30,10 +30,10 @@ class PersonController extends Controller
     public function store(Request $request)
     {
 
-        $request->validate([
-            'name' => 'required',
-            'contacts' => 'required|array'
-        ]);
+        // $request->validate([
+        //     'name' => 'required',
+        //     'contacts' => 'required|array'
+        // ]);
 
         $data = $request->json()->all();
 
