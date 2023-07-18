@@ -28,20 +28,36 @@ class PersonController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
-        $request->validate([
-            'name' => 'required',
-            'contacts' => 'required|array'
-        ]);
+{
+    $request->validate([
+        'name' => 'required',
+        'contacts' => 'required|array'
+    ]);
 
-        $person = Person::create([
-            'id' => (string) \Illuminate\Support\Str::uuid(),
-            'name' => $request->input('name'),
-            'contacts' => json_encode($request->input('contacts'))
-        ]);
+    $person = Person::create([
+        'id' => (string) \Illuminate\Support\Str::uuid(),
+        'name' => $request->json('name'),
+        'contacts' => $request->json('contacts'),
+    ]);
 
-        return response()->json($person, 201);
-    }
+    return response()->json($person, 201);
+}
+
+    // public function store(Request $request)
+    // {
+    //     $request->validate([
+    //         'name' => 'required',
+    //         'contacts' => 'required|array'
+    //     ]);
+
+    //     $person = Person::create([
+    //         'id' => (string) \Illuminate\Support\Str::uuid(),
+    //         'name' => $request->input('name'),
+    //         'contacts' => $request->input('contacts'),
+    //     ]);
+
+    //     return response()->json($person, 201);
+    // }
 
     /**
      * Display the specified resource.
