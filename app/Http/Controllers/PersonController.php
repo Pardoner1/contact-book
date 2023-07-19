@@ -77,10 +77,6 @@ class PersonController extends Controller
 
         $data = $request->json()->all();
 
-        $person = Person::create([
-            'id' => (string) \Illuminate\Support\Str::uuid(),
-        ]);
-
         $person = Person::findOrFail($id);
         $person->name = $data['name'];
         $person->contacts = $data['contacts'];
