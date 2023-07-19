@@ -48,22 +48,6 @@ class PersonController extends Controller
         return response()->json($person, 201);
     }
 
-    // public function store(Request $request)
-    // {
-    //     $request->validate([
-    //         'name' => 'required',
-    //         'contacts' => 'required|array'
-    //     ]);
-
-    //     $person = Person::create([
-    //         'id' => (string) \Illuminate\Support\Str::uuid(),
-    //         'name' => $request->input('name'),
-    //         'contacts' => $request->input('contacts'),
-    //     ]);
-
-    //     return response()->json($person, 201);
-    // }
-
     /**
      * Display the specified resource.
      */
@@ -86,14 +70,20 @@ class PersonController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'name' => 'required',
-            'contacts' => 'required|array'
+        // $request->validate([
+        //     'name' => 'required',
+        //     'contacts' => 'required|array'
+        // ]);
+
+        $data = $request->json()->all();
+
+        $person = Person::create([
+            'id' => (string) \Illuminate\Support\Str::uuid(),
         ]);
 
         $person = Person::findOrFail($id);
-        $person->name = $request->input('name');
-        $person->contacts = $request->input('contacts');
+        $person->name = $data['name'];
+        $person->contacts = $data['contacts'];
         $person->save();
 
         return response()->json($person);
